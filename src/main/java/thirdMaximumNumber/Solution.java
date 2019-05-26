@@ -12,12 +12,34 @@ public class Solution {
     }
 
     public int thirdMax(int[] nums) {
-        if(nums.length < 3) {
-            Arrays.sort(nums);
-            return nums[nums.length - 1];
-        }else {
-            return findKthLargest(nums, 3);
+        if (nums == null || nums.length == 0) {
+            return 0;
         }
+
+        long max = Long.MIN_VALUE, secondMax = Long.MIN_VALUE , thirdMax = Long.MIN_VALUE;
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (max < nums[i]) {
+                thirdMax = secondMax;
+                secondMax = max;
+                max = nums[i];
+                count++;
+            } else if (max > nums[i]) {
+                if (secondMax < nums[i]) {
+                    thirdMax = secondMax;
+                    secondMax = nums[i];
+                    count++;
+                } else if (secondMax > nums[i]) {
+
+                    if (thirdMax < nums[i]) {
+                        thirdMax = nums[i];
+                        count++;
+                    }
+                }
+            }
+        }
+
+        return (int) (count < 3 ? max : thirdMax);
     }
 
 }
