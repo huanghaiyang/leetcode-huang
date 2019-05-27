@@ -1,7 +1,5 @@
 package thirdMaximumNumber;
 
-import java.util.Arrays;
-
 /**
  * created by huang 5/25/19
  */
