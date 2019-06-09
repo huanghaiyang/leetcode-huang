@@ -1,4 +1,4 @@
-package arrayAndSorting;
+package mergeIntervals;
 
 import java.util.Comparator;
 import java.util.LinkedList;
